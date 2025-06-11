@@ -1,0 +1,75 @@
+{
+	"dimensions": {
+		"minecraft:overworld": {
+		  "type": "minecraft:overworld",
+		  "generator": {
+			"type": "minecraft:noise",
+			"biome_source": {
+			  "type": "minecraft:multi_noise",
+			  "preset": "minecraft:overworld"
+			},
+			"settings": "minecraft:overworld"
+		  }
+		},
+
+
+
+		"minecraft:the_nether": {
+			"type": "minecraft:the_nether",
+			"generator": {
+			  "type": "minecraft:noise",
+			  "biome_source": {
+				"type": "minecraft:multi_noise",
+				"preset": "minecraft:nether"
+			  },
+			  "settings": "minecraft:nether"
+			}
+		  },
+
+
+
+		"minecraft:the_end": {
+			"type": "bigglobe:end",
+			"generator": {
+				"type": "bigglobe:scripted",
+				"reload_dimension": "minecraft:the_end",
+				"height": {
+					"min_y": -512,
+					"max_y":  512
+				},
+				"world_traits": "bigglobe:end",
+				"layer": "bigglobe:end/root",
+				"feature_dispatcher": {
+					"rock_replacers": [
+						"#bigglobe:end/rock_layers",
+						"#bigglobe:end/ores"
+					],
+					"raw": "bigglobe:end/raw_root",
+					"normal": "bigglobe:end/normal_root"
+				},
+				"biome_source": {
+					"type": "bigglobe:scripted",
+					"script": "`bigglobe:end/surface`.biome",
+					"all_possible_biomes": "#bigglobe:end"
+				},
+				"overriders": "#bigglobe:end",
+				"end_overrides": {
+					"spawning": {
+						"location": [ 96, 67, 0 ],
+						"obsidian_platform": false
+					},
+					"inner_gateways": {
+						"radius": 84.0,
+						"height": 80
+					},
+					"outer_gateways": {
+						"min_radius": 512,
+						"max_radius": 4096,
+						"step": 32,
+						"condition": "`bigglobe:end/has_mountain`"
+					}
+				}
+			}
+		}
+	}
+}
